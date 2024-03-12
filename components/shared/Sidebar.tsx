@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import { SignedIn } from '@clerk/nextjs'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
 import { navLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
 
@@ -21,12 +21,26 @@ const Sidebar = () => {
                             const isActive = link.route === pathname
                             return(
                                 <li key={link.route} className={`sidebar-nav_element group ${isActive? 'bg-purple-gradient text-white': 'text-gray-700'}`}>
-                                    {link.label}
+                                    <Link className="sidebar-link" href={link.route}>
+                                        <Image 
+                                        src={link.icon}
+                                        width={24}
+                                        height={24}
+                                        className={`${isActive && 'brightness-200'}`}
+                                        alt="logo"
+                                        />
+                                        {link.label}
+                                    </Link>
                                 </li>
                             )
                         })}
                     </ul>
                 </SignedIn>
+                <SignedOut>
+                <Button>
+                    
+                </Button>
+                </SignedOut>
             </nav>
 
         </div>
