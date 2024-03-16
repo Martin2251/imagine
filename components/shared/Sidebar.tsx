@@ -18,7 +18,7 @@ const Sidebar = () => {
             <nav className='sidebar-nav'>
                 <SignedIn>
                     <ul className='sidebar-nav_elements'>
-                        {navLinks.map((link) =>{
+                        {navLinks.slice(0,6).map((link) =>{
                             const isActive = link.route === pathname
                             return(
                                 <li key={link.route} className={`sidebar-nav_element group ${isActive? 'bg-purple-gradient text-white': 'text-gray-700'}`}>
@@ -35,6 +35,8 @@ const Sidebar = () => {
                                 </li>
                             )
                         })}
+                        </ul>
+                    <ul>
                         <li className='flex-center cursor-pointer gap-2 p-4'>
                         <UserButton afterSignOutUrl='/' showName />
                         </li>
