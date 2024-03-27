@@ -8,9 +8,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet"
 import Link from 'next/link'
-import { SignedIn, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { navLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
+import { Button } from '../ui/button'
 
 
 const MobileNav = () => {
@@ -39,12 +40,12 @@ const MobileNav = () => {
                             const isActive = link.route === pathname
                             return(
                                 <li key={link.route} className={` ${isActive && 'gradient-text' } p-18 flex whitespace-nowrap text-dark-700`}>
-                                    <Link className="sidebar-link" href={link.route}>
+                                    <Link className="sidebar-link cursor-pointer" href={link.route}>
                                         <Image 
                                         src={link.icon}
                                         width={24}
                                         height={24}
-                                        className={`${isActive && 'brightness-200'}`}
+                                   
                                         alt="logo"
                                         />
                                         {link.label}
@@ -58,6 +59,12 @@ const MobileNav = () => {
             </Sheet>
 
         </SignedIn>
+        <SignedOut>
+                <Button  asChild className='button bg-purple-gradient bg-cover'>
+                    <Link href="/sign-in">Login</Link>
+                    
+                </Button>
+                </SignedOut>
 
       </nav>
     </header>
