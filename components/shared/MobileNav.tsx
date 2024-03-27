@@ -40,7 +40,13 @@ const MobileNav = () => {
                             return(
                                 <li key={link.route} className={` ${isActive && 'gradient-text' } p-18 flex whitespace-nowrap text-dark-700`}>
                                     <Link className="sidebar-link" href={link.route}>
-                                     
+                                        <Image 
+                                        src={link.icon}
+                                        width={24}
+                                        height={24}
+                                        className={`${isActive && 'brightness-200'}`}
+                                        alt="logo"
+                                        />
                                         {link.label}
                                     </Link>
                                 </li>
