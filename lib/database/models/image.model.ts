@@ -1,18 +1,22 @@
 import { Schema, model, models } from "mongoose";
 
-interface Image {
+ export interface Image extends  Document{
     title: string;
     transformationType: string;
     publicId: string;
-    secureUrl: URL;
+    secureUrl: string;
     width?: number;
     height?: number;
     config?: object;
-    transformationUrl?: URL;
+    transformationUrl?: string;
     aspectRatio?: string;
     color?: string;
     prompt?: string;
-    author: Schema.Types.ObjectId | string; // Assuming Schema.Types.ObjectId is imported from Mongoose
+    author:{
+        _id:string;
+        firstName:string,
+        lastName:string;
+    }
     createdAt: Date;
     updatedAt: Date;
 }
